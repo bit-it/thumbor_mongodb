@@ -1,5 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # thumbor imaging service
-# https://github.com/thumbor/thumbor/wiki
+# https://github.com/globocom/thumbor/wiki
+
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
 
 from tornado.concurrent import return_future
 from pymongo import MongoClient
@@ -21,4 +27,5 @@ def load(self, path, callback):
 	db = __conn__(self)
 	fs = gridfs.GridFS(db)
 	contents = fs.get(ObjectId(path)).read()
+	print("Loading Image from MongoDB...")
 	callback(contents)
